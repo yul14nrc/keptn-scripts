@@ -13,3 +13,5 @@ read -rsp $'Press ctrl-c to abort. Press any key to continue...\n' -n1 key
 ## Install Dynatrace SLI Service
 git clone --branch release-$LATEST_RELEASE https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
 kubectl apply -f dynatrace-sli-service/deploy/
+cp -r ./dynatrace-sli-service/deploy/* ./manifests/gen/dynatrace-sli-service.yaml
+rm -rf ./dynatrace-sli-service/
