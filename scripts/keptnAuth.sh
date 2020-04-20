@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "KEPTN_API_URL:"
 KEPTN_API_URL=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain})
 echo $KEPTN_API_URL
