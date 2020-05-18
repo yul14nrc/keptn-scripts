@@ -30,8 +30,6 @@ kubectl apply -f ./manifests/gen/lighthouse_source_dynatrace.yaml
 ## Dynatrace SLI Provider reads Dynatrace Token information from dynatrace-credentials-PROJECTNAME
 ###################################################################################
 echo "DT_TENANT: $DT_TENANT
-DT_API_TOKEN: $DT_API_TOKEN" > dynatrace_secret.yaml
+DT_API_TOKEN: $DT_API_TOKEN" > ./manifests/gen/dynatrace_secret_$1.yaml
 
-kubectl create secret generic dynatrace-credentials-$1 -n "keptn" --from-file=dynatrace-credentials=dynatrace_secret.yaml
-
-rm dynatrace_secret.yaml
+kubectl create secret generic dynatrace-credentials-$1 -n "keptn" --from-file=dynatrace-credentials=./manifests/gen/dynatrace_secret_$1.yaml
