@@ -20,11 +20,11 @@ read -rsp $'Press ctrl-c to abort. Press any key to continue...\n' -n1 key
 ## The Lighthouse Service needs a ConfigMap with the name lighthouse-config-PROJECTNAME
 ## This ConfigMap references the SLI Provider to be used, in our case Dynatrace
 ###################################################################################
-rm -f ./manifests/gen/lighthouse_source_dynatrace.yaml
+rm -f ./manifests/gen/lighthouse_source_dynatrace_$1.yaml
 cat ./manifests/lighthouse_source_dynatrace.yaml | \
-  sed 's~PROJECT~'"$1"'~' > ./manifests/gen/lighthouse_source_dynatrace.yaml
+  sed 's~PROJECT~'"$1"'~' > ./manifests/gen/lighthouse_source_dynatrace_$1.yaml
 
-kubectl apply -f ./manifests/gen/lighthouse_source_dynatrace.yaml
+kubectl apply -f ./manifests/gen/lighthouse_source_dynatrace_$1.yaml
 
 ###################################################################################
 ## Dynatrace SLI Provider reads Dynatrace Token information from dynatrace-credentials-PROJECTNAME
