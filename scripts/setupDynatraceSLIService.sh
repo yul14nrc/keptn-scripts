@@ -1,12 +1,9 @@
 #!/bin/bash
 
-DT_TENANT=$(cat creds_dt.json | jq -r '.dynatraceTenant')
-DT_API_TOKEN=$(cat creds_dt.json | jq -r '.dynatraceApiToken')
-
 LATEST_RELEASE=$(curl -s https://api.github.com/repos/keptn-contrib/dynatrace-sli-service/releases/latest | grep tag_name | cut -d '"' -f 4)
 
 echo "============================================================="
-echo "About to install the Dynatrace SLI Service $LATEST_RELEASE for keptn to talk to $DT_TENANT"
+echo "About to install the Dynatrace SLI Service $LATEST_RELEASE for keptn"
 echo "============================================================="
 read -rsp $'Press ctrl-c to abort. Press any key to continue...\n' -n1 key
 
