@@ -32,7 +32,7 @@ kubectl apply -f ./manifests/gen/lighthouse_source_dynatrace_$1.yaml
 echo "DT_TENANT: $DT_TENANT
 DT_API_TOKEN: $DT_API_TOKEN" > ./manifests/gen/dynatrace_secret_$1.yaml
 
-kubectl create secret generic dynatrace-credentials-$1 -n "keptn" --from-file=dynatrace-credentials=./manifests/gen/dynatrace_secret_$1.yaml
+kubectl create secret generic dynatrace-credentials-$1 -n "keptn" --from-literal=DT_TENANT=$DT_TENANT --from-literal=DT_API_TOKEN=$DT_API_TOKEN
 
 ###################################################################################
 ## Dynatrace config yaml file
